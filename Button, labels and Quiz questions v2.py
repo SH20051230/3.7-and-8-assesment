@@ -4,7 +4,7 @@
 # function to make an answer:
 def quiz_answer():
     Label(root, bg="yellow", fg="red", text="wha",
-          font=("Times", "50", "bold")).pack
+          font=("Times", "50", "bold")).pack()
 
 # import tkinter
 from tkinter import *
@@ -21,5 +21,5 @@ Quiz_question = Label(root, bg="black", fg="white", text="what is 4 in Maoti?",
                       font=("Times", 20, "bold"))
 Quiz_question.pack()
 # button for answers
-Button_quiz_answer = Button(root)
+Button_quiz_answer = Button(root, text="wha", command=quiz_answer())
 root.mainloop()
