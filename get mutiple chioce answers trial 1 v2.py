@@ -1,6 +1,7 @@
 import random
 from tkinter import *
 # The code below come from component 2 v3
+# getting the answer by using multiple buttons
 # Link the labels with the fucntions created previously
 # to randomly generated a correct answer label and other 3 incorrect labels
 root = Tk()
