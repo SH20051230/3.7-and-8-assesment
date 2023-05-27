@@ -2,7 +2,9 @@
 # The end quiz function is developed and will end the program when the user have answered all 12 questions
 # but another function must be developed first before the end quiz function in order to corectly
 # run the program
-# This version now can display the correct answer after the user have answer the question wrong.
+# This version now will only allow user to click once next question button before they answered any of the questions
+# to prevent them from spaming one correct answer to "cheat" the scores
+# this will then be linked to the end quiz program
 from tkinter import *
 import random
 
@@ -72,6 +74,17 @@ def check_answer(user_answer, correct_answer):
             f.write(str(high_score))
 
 
+def set_choice(button, choice, correct_answer):
+    global selected_choice
+    selected_choice = button
+    check_answer(choice, correct_answer)
+    choice_1.configure(state="disabled")
+    choice_2.configure(state="disabled")
+    choice_3.configure(state="disabled")
+    choice_4.configure(state="disabled")
+    next_question_button.configure(state="normal")
+
+
 # Main routine
 root = Tk()
 root.title("Te Reo Maori Quiz")
@@ -122,11 +135,12 @@ choice_4 = Button(root, bg="purple", fg="blue", text="", font=("Times", 20))
 choice_4.grid(column=2, row=6, sticky=E, padx=(0, 30), pady=(0, 50))
 
 # Next question button
-next_question_button = Button(root, bg="red", fg="black", text="Next question", font=("Times", 15), command=get_question)
+next_question_button = Button(root, bg="red", fg="black", text="Next question", font=("Times", 15), command=get_question, state="disabled")
 next_question_button.grid(column=2, row=5, ipadx=50, ipady=10)
 
 # Question label
 current_question = []
+selected_choice = None
 questions = []
 Questions("January", "Kohi-tātea", 1)
 Questions("February", "Hui-tanguru", 2)
